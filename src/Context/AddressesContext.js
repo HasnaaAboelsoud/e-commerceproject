@@ -12,17 +12,6 @@ export function AddressesContextProvider({children}){
         }).then((data)=>data)
         .catch((error)=>error);
     }
-
-    // function getLoggedUserAddress(){
-    //     return axios.get("https://ecommerce.routemisr.com/api/v1/addresses",{
-    //         headers:{
-    //             token,
-    //         }
-    //     }).then((data)=>{
-    //         return data;
-    //     })
-    //     .catch((error)=>console.log(error));
-    // }
     
     function Deleteaddress(id){
         return axios.delete(`https://ecommerce.routemisr.com/api/v1/addresses/${id}`,{

@@ -15,17 +15,14 @@ export default function Addresses() {
     async function getLoggedUserAddressFun(){
         try {
             const {data}=await axios.get("https://ecommerce.routemisr.com/api/v1/addresses",{
-            headers:{
-                token,
-            }
-        })
-            // const data= await getLoggedUserAddress();
-            console.log(data);
+                headers:{
+                    token,
+                }
+            })
             if(data?.data?.status === "success"){
                 setUserAddresses(data.data.data);
             }
         } catch (error) {
-            console.log(error);
             toast.error("Error",{className:"bg-danger text-white"});
         }
     }
