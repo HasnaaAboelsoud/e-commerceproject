@@ -49,10 +49,10 @@ export default function WishList() {
             {wishlists.length > 0 ? wishlists.map((wishlist, index) => <div className='row border mt-3 px-2 py-3' key={index}>
                 <div className='col-md-10'>
                     <div className='row'>
-                        <div className='col-md-1'>
+                        <div className='col-md-2 col-lg-1'>
                             <img src={wishlist.imageCover} className='w-100' alt={wishlist.title}></img>
                         </div>
-                        <div className='col-md-11'>
+                        <div className='col-md-10 col-lg-11'>
                             <h3 className='h6 mb-4'>{wishlist.title}</h3>
                             <h3 className='h6 mb-4'>{wishlist.category.name}</h3>
                             {wishlist.priceAfterDiscount?<>

@@ -4,7 +4,6 @@ import { createContext, useState } from "react";
 export const AddressesContext= createContext("");
 export function AddressesContextProvider({children}){
     const token= localStorage.getItem("userToken");
-    const [Phone,setPhone]= useState("");
     function AddAddresses(values){
         return axios.post("https://ecommerce.routemisr.com/api/v1/addresses",values,{
             headers:{
@@ -20,8 +19,9 @@ export function AddressesContextProvider({children}){
                 token,
             }
         }).then((data)=>{
-            setPhone(data.data.data.phone)})
-        .catch((error)=>error);
+            return data;
+        })
+        .catch((error)=>console.log(error));
     }
     
     function Deleteaddress(id){
@@ -32,7 +32,7 @@ export function AddressesContextProvider({children}){
         }).then((data)=>data)
         .catch((error)=>error);
     }
-    return <AddressesContext.Provider value={{Phone,AddAddresses,getLoggedUserAddress,Deleteaddress}}>
+    return <AddressesContext.Provider value={{AddAddresses,getLoggedUserAddress,Deleteaddress}}>
         {children}
     </AddressesContext.Provider>
 }

@@ -8,6 +8,7 @@ import {Helmet} from "react-helmet";
 export default function Addresses() {
     const {getLoggedUserAddress,Deleteaddress}= useContext(AddressesContext);
     const [userAddresses,setUserAddresses]= useState([]);
+    console.log(userAddresses);
 
     async function getLoggedUserAddressFun(){
         try {
