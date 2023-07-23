@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const AddressesContext= createContext("");
 export function AddressesContextProvider({children}){
@@ -13,16 +13,16 @@ export function AddressesContextProvider({children}){
         .catch((error)=>error);
     }
 
-    function getLoggedUserAddress(){
-        return axios.get("https://ecommerce.routemisr.com/api/v1/addresses",{
-            headers:{
-                token,
-            }
-        }).then((data)=>{
-            return data;
-        })
-        .catch((error)=>console.log(error));
-    }
+    // function getLoggedUserAddress(){
+    //     return axios.get("https://ecommerce.routemisr.com/api/v1/addresses",{
+    //         headers:{
+    //             token,
+    //         }
+    //     }).then((data)=>{
+    //         return data;
+    //     })
+    //     .catch((error)=>console.log(error));
+    // }
     
     function Deleteaddress(id){
         return axios.delete(`https://ecommerce.routemisr.com/api/v1/addresses/${id}`,{
@@ -32,7 +32,7 @@ export function AddressesContextProvider({children}){
         }).then((data)=>data)
         .catch((error)=>error);
     }
-    return <AddressesContext.Provider value={{AddAddresses,getLoggedUserAddress,Deleteaddress}}>
+    return <AddressesContext.Provider value={{AddAddresses,Deleteaddress}}>
         {children}
     </AddressesContext.Provider>
 }

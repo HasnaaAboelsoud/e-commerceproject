@@ -4,15 +4,22 @@ import { AddressesContext } from '../../Context/AddressesContext'
 import { toast } from 'react-hot-toast';
 import Loading from '../Loading/Loading';
 import {Helmet} from "react-helmet";
+import axios from 'axios';
 
 export default function Addresses() {
-    const {getLoggedUserAddress,Deleteaddress}= useContext(AddressesContext);
+    const {Deleteaddress}= useContext(AddressesContext);
     const [userAddresses,setUserAddresses]= useState([]);
+    const token= localStorage.getItem("userToken");
     console.log(userAddresses);
 
     async function getLoggedUserAddressFun(){
         try {
-            const data= await getLoggedUserAddress();
+            const {data}=await axios.get("https://ecommerce.routemisr.com/api/v1/addresses",{
+            headers:{
+                token,
+            }
+        })
+            // const data= await getLoggedUserAddress();
             console.log(data);
             if(data?.data?.status === "success"){
                 setUserAddresses(data.data.data);
