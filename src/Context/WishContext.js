@@ -18,9 +18,11 @@ export function WishContextProvider({children}){
                     token,
                 }
             })
-            if(data.status === "success"){
+            if(data.status === "success" && token){
                 toast.success(data.message,{className:"bg-main text-white p-1"});
                 setisloading(false);
+            }else{
+                toast.error("You didn't login",{className:"bg-danger text-white p-1"});
             }
         } catch (error) {
             console.log(error);

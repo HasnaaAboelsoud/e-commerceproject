@@ -10,12 +10,16 @@ export function CartContextProvider({children}){
     const [isloading,setisLoading]= useState(false);
 
     function AddToCart(productId,token){
-        return axios.post("https://ecommerce.routemisr.com/api/v1/cart",{
-            productId,
-        },{headers:{
-            token,
-        }}).then((data)=>data)
-        .catch((error)=>error);
+        if(token){
+            return axios.post("https://ecommerce.routemisr.com/api/v1/cart",{
+                productId,
+            },{headers:{
+                token,
+            }}).then((data)=>data)
+            .catch((error)=>error);
+        }else{
+            toast.error("You didn't login",{className:"bg-danger text-white p-1"});
+        }
     }
 
     async function AddProductToCart(productId){

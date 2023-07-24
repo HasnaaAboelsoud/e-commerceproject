@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter, createHashRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import './App.css';
 import Layout from './Components/Layout/Layout';
 import Home from './Components/Home/Home';
@@ -6,7 +6,6 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Cart from './Components/Cart/Cart';
 import Brands from './Components/Brands/Brands';
-import Products from './Components/CategoryProducts/CategoryProducts';
 import NotFound from './Components/NotFound/NotFound';
 import ProtectedRouter from './Components/ProtectedRouter/ProtectedRouter';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
@@ -35,7 +34,7 @@ function App() {
 
   const routers=createHashRouter([
     {path: "",element: <Layout/>,children:[
-      {index: true,element:<ProtectedRouter><Home/></ProtectedRouter>},
+      {index: true,element:<Home/>},
       {path:"/login",element:<Login/>},
       {path:"/forgetpassword",element:<ForgetPassword/>},
       {path:"/resetpassword",element:<ResetPassword/>},

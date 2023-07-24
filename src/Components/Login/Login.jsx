@@ -15,7 +15,7 @@ export default function Login() {
 
     const validationSchema= Yup.object({
         email: Yup.string().required("Email is required").email("Email is invalid"),
-        password: Yup.string().required("Password is required").matches(/^[A-Z][a-z0-9]{5,10}$/,"password must start with capital letter"),
+        password: Yup.string().required("Password is required").matches(/^[A-Za-z0-9]{5,10}$/,"password must Contain 5:10 characters or number"),
     })
     const formik=useFormik({
         initialValues:{

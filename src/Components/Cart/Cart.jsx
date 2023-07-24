@@ -24,6 +24,8 @@ export default function Cart() {
                 toast.error("No Produts in cart",{className:"bg-danger text-white p-1"});
                 navigate("/");
             }
+        }else{
+            toast.error("You didn't login",{className:"bg-danger text-white p-1"});
         }
     }
     useEffect(()=>{
