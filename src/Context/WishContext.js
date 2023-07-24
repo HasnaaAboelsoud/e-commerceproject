@@ -10,17 +10,19 @@ export function WishContextProvider({children}){
 
     async function AddWishlist(productId){
         try {
-            setisloading(true);
-            const {data}= await axios.post("https://route-ecommerce.onrender.com/api/v1/wishlist",{
-                productId,
-            },{
-                headers:{
-                    token,
+            if(token){
+                setisloading(true);
+                const {data}= await axios.post("https://route-ecommerce.onrender.com/api/v1/wishlist",{
+                    productId,
+                },{
+                    headers:{
+                        token,
+                    }
+                })
+                if(data.status === "success"){
+                    toast.success(data.message,{className:"bg-main text-white p-1"});
+                    setisloading(false);
                 }
-            })
-            if(data.status === "success" && token){
-                toast.success(data.message,{className:"bg-main text-white p-1"});
-                setisloading(false);
             }else{
                 toast.error("You didn't login",{className:"bg-danger text-white p-1"});
             }

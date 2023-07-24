@@ -12,13 +12,16 @@ export default function WishList() {
 
     async function getLoggedUserWish(){
         try {
-            setloading(true);
-            const response= await GetWishList();
-            if(response?.data?.status === "success"){
-                setWishList(response.data.data);
-                setloading(false);
+            if(localStorage.getItem("userToken") !== null){
+                setloading(true);
+                const response= await GetWishList();
+                if(response?.data?.status === "success"){
+                    setWishList(response.data.data);
+                    setloading(false);
+                }
+            }else{
+                toast.error("You didn't login",{className:"bg-danger text-white p-1"});
             }
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
